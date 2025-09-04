@@ -48,3 +48,27 @@ class Todolist:
         self.save_task()
         print(f"Added task: {description.strip()}")
         return True
+
+
+    # Display all Tasks
+    def list_tasks(self, show_completed=True):
+        if not self.tasks:
+            print("No tasks in your todo list")
+            return
+        
+        print("\n" + "="*20)
+        print("YOUR TO-DO LIST")
+        print("="*20)
+
+        for task in self.tasks:
+            if not show_completed and task['completed']:
+                continue
+
+            status = "Done" if task['completed'] else "Still"
+            completed_info = f"(Completed: {task['completed_at']})" if task ['completed'] else ""
+
+            print(f"{task['id']:3d}. [{status}] {task['description']}{completed_info}")
+
+            
+    
+        
